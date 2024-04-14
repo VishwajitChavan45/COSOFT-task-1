@@ -1,0 +1,36 @@
+tasks = []
+
+def add_task(task):
+    tasks.append({'task': task, 'completed': False})
+
+def view_tasks():
+    if tasks:
+        for index, task in enumerate(tasks, start=1):
+            status = '✓' if task['completed'] else ' '
+            print(f"{index}. [{status}] {task['task']}")
+    else:
+        print("No tasks yet.")
+
+def mark_completed(index):
+    if 1 <= index <= len(tasks):
+        tasks[index - 1]['completed'] = True
+    else:
+        print("Invalid task index.")
+
+def delete_task(index):
+    if 1 <= index <= len(tasks):
+        del tasks[index - 1]
+    else:
+        print("Invalid task index.")
+
+# Example Usage
+add_task("Complete assignment")
+add_task("Buy groceries")
+add_task("Call mom")
+
+view_tasks()
+
+mark_completed(1)
+delete_task(2)
+
+view_tasks()
